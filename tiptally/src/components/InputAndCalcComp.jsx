@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { useMediaQuery } from '@mui/material';
 
 function InputAndCalcComp({ setCalculatedValue, setTotalValue }) {
   const tipVal = [5, 10, 15, 20, 50];
+  const isSmallScreen = useMediaQuery('(max-width: 750px)');
+  
 
   const [bill, setBill] = useState('');
   const [selectedTip, setSlectedTip] = useState(0);
@@ -84,7 +87,7 @@ function InputAndCalcComp({ setCalculatedValue, setTotalValue }) {
   }, [numberOfPeople]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '50%', marginRight: '1rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: isSmallScreen ? '100%' : '50%', marginRight: '1rem', textAlign: isSmallScreen ? 'left' : 'center ' }}>
       <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
         <label htmlFor="number" style={{ textTransform: 'capitalize', color: 'hsl(186, 14%, 43%)' }}>
           bill
@@ -131,7 +134,7 @@ function InputAndCalcComp({ setCalculatedValue, setTotalValue }) {
               border: '0',
               borderRadius: '.4rem',
               height: '2.3rem',
-              width: '5.7rem',
+              width: '85%',
               marginTop: '1rem',
               textAlign: 'right',
               padding: '0 0.5rem',

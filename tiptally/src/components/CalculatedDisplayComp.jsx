@@ -1,13 +1,16 @@
 import React from 'react'
 import Button from '@mui/material/Button';
+import { useMediaQuery } from '@mui/material';
 
 function CalculatedDisplayComp({ calculatedValue, totalValue }) {
+  const isSmallScreen = useMediaQuery('(max-width: 750px)');
+
   const handleReset = () => {
     window.location.reload();
   };
   
   return (
-    <div style={{ width: '50%', marginLeft: '1rem', backgroundColor: 'hsl(183, 100%, 15%) ' , height: '100%', padding: '1rem', borderRadius: '.7rem'}}>
+    <div style={{ width: isSmallScreen ? '100%' : '50%', marginLeft: isSmallScreen ? '0' : '1rem', backgroundColor: 'hsl(183, 100%, 15%) ' , height: '100%', padding: isSmallScreen ? '1rem 1rem  2rem 1rem' : '1rem', borderRadius: '.7rem', marginTop: isSmallScreen ? '2rem' : '0' }}>
      
      <div style={{ display: 'flex', alignItems: 'center' , justifyContent: 'space-between'}}>
       <div>
